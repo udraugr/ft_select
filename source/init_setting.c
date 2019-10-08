@@ -12,11 +12,11 @@
 
 #include "../include/ft_select.h"
 
-static void		ft_get_max_len_file(t_setting *sets)
+void			ft_get_max_len_file(t_setting *sets)
 {
 	t_vector	*cur_file;
-	int			max;
-	int			len_filename;
+	int		max;
+	int		len_filename;
 
 	cur_file = *sets->lst_file;
 	max = 1;
@@ -30,10 +30,16 @@ static void		ft_get_max_len_file(t_setting *sets)
 	sets->max_len_file = max;
 }
 
-static void		ft_get_win_size(t_setting *sets)
+void			ft_get_win_size(t_setting *sets)
 {
-	struct ;
+	struct winsize	win_size;;
+
+	ioctl(STDOUT_FILENO, TIOCWINSZ, &win_size);
+	sets->row = win_size.ws_row;
+	sets->column = win_size.ws_col;
 }
+
+
 
 int				init_setting(t_setting *sets, t_vector **lst_file)
 {
@@ -44,5 +50,10 @@ int				init_setting(t_setting *sets, t_vector **lst_file)
 	sets->lst_file = lst_file;
 	ft_get_max_len_file(sets);
 	ft_get_win_size(sets);
+	tcgetattr(STDIN_FILENO, &sets->def_sets);
+	tcgetattr(STDIN_FILENO, &sets->my_sets);
+	sets->my_sets.c_lflag &= ~(ECHO | ICANON) // нужно еще почитать как это работает
+	sets->my_sets.c_cc[VMIN] = 1;
+	sets->my_sets.c_cc[VTIME] = 0;
 	return (SUCCESS);
 }

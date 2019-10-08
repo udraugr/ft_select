@@ -1,0 +1,4 @@
+ft_select
+*.o
+*.a
+.DS_Store

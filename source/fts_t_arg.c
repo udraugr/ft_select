@@ -44,6 +44,7 @@ t_arg			*ft_create_t_arg(char *value)
 		return (NULL);
 	}
 	new->file_type = ft_get_file_type(value);
+	new->chose = 0;
 	return (new);
 }
 

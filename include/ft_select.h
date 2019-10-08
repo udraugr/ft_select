@@ -32,21 +32,27 @@
 
 typedef struct		s_arg
 {
-	char			*file_name;
-	int				file_type;
-}					t_arg;
+	char		*file_name;
+	int		file_type;
+	int		chose;
+}			t_arg;
 
 typedef struct		s_setting
 {
-	t_vector		**lst_file;
-	int				column;
-	int				row;
-	int				cur_pos;
-	int				max_len_file;
-}					t_setting
+	t_vector	**lst_file;
+	int		column;
+	int		row;
+	int		cur_pos;
+	int		max_len_file;
+	struct termios	def_sets;
+	struct termios	my_sets;
+}			t_setting;
 
 t_arg				*ft_create_t_arg(char *value);
 void				ft_destroy_t_arg(void **old_void);
+
+void				ft_get_win_size(t_setting *sets);
+void				ft_get_max_len_name(t_setting *sets);
 
 void				ft_drawing(t_vector **lst_file);
 
