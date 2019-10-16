@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:19:07 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/09/13 16:35:04 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/16 15:35:39 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int				main(int argc, char **argv)
 		if (ft_parse_argv(&argv[1], argc - 1, &lst_file) == FAIL ||
 				init_setting(&sets, &lst_file) == FAIL)
 			return (FAIL);
-		ft_drawing(&lst_file);
+		ft_take_my_setting(&sets);
+		ft_wait_input();
 	}
 	return (0);
 }

@@ -5,9 +5,12 @@ INCLUDE := -I include
 LIBFTPRINTF := -L libftprintf -lftprintf
 
 SRC :=	\
-	source/drawing.c\
 	source/fts_t_arg.c\
+	source/init_setting.c\
 	source/main.c\
+	source/set_setting.c\
+	source/wait_input.c\
+	source/ft_take_my_setting.c\
 
 OBJ := $(patsubst %.c, %.o, $(SRC))
 
