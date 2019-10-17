@@ -11,6 +11,9 @@ SRC :=	\
 	source/set_setting.c\
 	source/wait_input.c\
 	source/ft_take_my_setting.c\
+	source/ft_end_work.c\
+	source/signal_intercept.c\
+	source/ft_del_file.c\
 
 OBJ := $(patsubst %.c, %.o, $(SRC))
 

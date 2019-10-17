@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:19:07 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/16 15:35:39 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/17 15:52:12 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int				main(int argc, char **argv)
 			return (FAIL);
 		ft_take_my_setting(&sets);
 		ft_wait_input();
+		ft_end_work(0);
 	}
 	return (0);
 }

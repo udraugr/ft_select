@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:16:43 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/16 15:44:16 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/17 17:00:04 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/stat.h>
 # include <termios.h>
 # include <sys/ioctl.h>
+# include <signal.h>
 
 # define FAIL 1
 # define SUCCESS 0
@@ -69,6 +70,11 @@ void				ft_get_max_len_name(t_setting *sets);
 int					init_setting(t_setting **sets, t_vector **lst_file);
 
 void				ft_wait_input(void);
+void				ft_signal_intercept(void);
+
+int					ft_del_file(t_setting **sets, int key);
+
+void				ft_end_work(int sign);
 
 void				set_setting(struct termios *sets);
 
