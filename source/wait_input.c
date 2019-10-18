@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:35:59 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/17 16:59:07 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/18 13:52:23 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static int				ft_key_distribution(t_setting **sets,
 	else if (key == DELETE || key == BACKSPACE)
 		return (ft_del_file(sets, key));
 	else if (key == SPACE)
-		((t_arg *)(*((*sets)->lst_file))->content)->chose =
-			!((t_arg *)(*((*sets)->lst_file))->content)->chose;
+		((t_arg *)((*sets)->lst_file->content))->chose =
+			!((t_arg *)((*sets)->lst_file->content))->chose;
 	/*else
 		ft_find_mode();*/
 	return (SUCCESS);

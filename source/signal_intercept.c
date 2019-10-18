@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:02:34 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/17 16:08:36 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/18 14:02:30 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void			ft_stop_work(int sign)
 	{
 		sets = ft_take_my_setting(0);
 		set_setting(&((*sets)->def_sets));
+		signal(SIGTSTP, SIG_DFL);
 	}
 }
 

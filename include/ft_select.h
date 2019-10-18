@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:16:43 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/17 17:00:04 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/18 13:48:23 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct		s_arg
 
 typedef struct		s_setting
 {
-	t_vector		**lst_file;
+	t_vector		*lst_file;
 	int				column;
 	int				row;
 	int				cur_pos;
@@ -67,7 +67,7 @@ void				ft_destroy_t_arg(void **old_void);
 
 void				ft_get_win_size(t_setting *sets);
 void				ft_get_max_len_name(t_setting *sets);
-int					init_setting(t_setting **sets, t_vector **lst_file);
+int					init_setting(t_setting **sets, t_vector *lst_file);
 
 void				ft_wait_input(void);
 void				ft_signal_intercept(void);

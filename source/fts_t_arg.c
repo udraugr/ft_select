@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 19:32:53 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/09/13 15:02:18 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/18 13:16:09 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void			ft_destroy_t_arg(void **old_void)
 	old = (t_arg **)old_void;
 	if (old == NULL || *old == NULL)
 		return ;
-	ft_strdel(&(*old)->file_name);
+	ft_strdel(&((*old)->file_name));
 	ft_bzero((void *)(*old), sizeof(t_arg));
 	ft_memdel((void **)old);
 }

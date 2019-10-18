@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:32:32 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/17 16:07:50 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/18 13:51:34 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void			ft_end_work(int sign)
 	sets = ft_take_my_setting(0);
 	if (sign == 0)
 	{
-		files = *((*sets)->lst_file);
+		files = (*sets)->lst_file;
 		while (files->previous)
 			files = files->previous;
 		while (files->next)
@@ -33,7 +33,7 @@ void			ft_end_work(int sign)
 	set_setting(&((*sets)->def_sets));
 	if ((*sets)->lst_file)
 	{
-		ft_delall_vector((*sets)->lst_file, ft_destroy_t_arg);
+		ft_delall_vector(&((*sets)->lst_file), ft_destroy_t_arg);
 	}
 	ft_bzero((void *)(*sets), sizeof(t_setting));
 	ft_memdel((void **)(sets));

@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 16:30:44 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/16 14:51:32 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/18 13:48:52 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			ft_get_max_len_file(t_setting *sets)
 	int			max;
 	int			len_filename;
 
-	cur_file = *sets->lst_file;
+	cur_file = sets->lst_file;
 	max = 1;
 	while (cur_file)
 	{
@@ -47,7 +47,7 @@ void			ft_get_win_size(t_setting *sets)
 **	sets->my_sets.c_lflag &= ~(ECHO | ICANON) изменяет начальные настройки
 */
 
-int				init_setting(t_setting **sets, t_vector **lst_file)
+int				init_setting(t_setting **sets, t_vector *lst_file)
 {
 	if (getenv("TERM") == NULL ||
 		((*sets) = (t_setting *)malloc(sizeof(t_setting))) == NULL)
