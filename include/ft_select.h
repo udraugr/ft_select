@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:16:43 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/18 15:08:42 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/18 17:28:47 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@
 
 # define ENTER 10
 # define BACKSPACE 127
-# define ARROW_LEFT 454084
-# define ARROW_RIGTH 454083
-# define ARROW_UP 454081
-# define ARROW_DOWN 454082
+# define ARROW_LEFT 1792836
+# define ARROW_RIGTH 1792835
+# define ARROW_UP 1792833
+# define ARROW_DOWN 1792834
 # define SPACE 32
 # define DELETE 458961790
 # define ESC 27
@@ -73,6 +73,7 @@ void				ft_wait_input(void);
 void				ft_signal_intercept(void);
 
 int					ft_del_file(t_setting **sets, int key);
+void				ft_moves(t_setting **sets, unsigned long long key);
 
 void				ft_end_work(int sign);
 

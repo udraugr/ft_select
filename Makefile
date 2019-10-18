@@ -14,6 +14,7 @@ SRC :=	\
 	source/ft_end_work.c\
 	source/signal_intercept.c\
 	source/ft_del_file.c\
+	source/ft_moves.c\
 
 OBJ := $(patsubst %.c, %.o, $(SRC))
 

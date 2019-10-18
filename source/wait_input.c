@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:35:59 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/18 15:45:40 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/18 17:27:53 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static int				ft_key_distribution(t_setting **sets,
 	sets = (t_setting **)((void **)sets);
 	if (key == ENTER || key == ESC)
 		return (EXIT);
-	/*else if (key == ARROW_LEFT || key == ARROW_RIGTH ||
+	else if (key == ARROW_LEFT || key == ARROW_RIGTH ||
 			key == ARROW_DOWN || key == ARROW_UP)
-		ft_moves(sets, key);*/
+		ft_moves(sets, key);
 	else if (key == DELETE || key == BACKSPACE)
 		return (ft_del_file(sets, key));
 	else if (key == SPACE)
