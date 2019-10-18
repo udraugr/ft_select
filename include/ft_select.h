@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:16:43 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/18 13:48:23 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/18 15:08:42 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define ARROW_UP 454081
 # define ARROW_DOWN 454082
 # define SPACE 32
-# define DELETE 58120702
+# define DELETE 458961790
 # define ESC 27
 
 typedef struct		s_arg

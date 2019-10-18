@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:35:59 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/18 13:52:23 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/18 15:45:40 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void					ft_wait_input(void)
 	//drawing(sets);
 	ft_signal_intercept();
 	while (sets && (*sets)->lst_file &&
-			(read_bite = read(STDOUT_FILENO, buff, 4)))
+			(read_bite = read(STDOUT_FILENO, buff, 5)))
 	{
 		buff[read_bite] = '\0';
 		key = buff[0];

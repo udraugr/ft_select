@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:32:32 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/18 13:51:34 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/18 15:49:36 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void			ft_end_work(int sign)
 	t_vector	*files;
 
 	sets = ft_take_my_setting(0);
-	if (sign == 0)
+	files = (*sets)->lst_file;
+	if (sign == 0 && files != NULL)
 	{
-		files = (*sets)->lst_file;
 		while (files->previous)
 			files = files->previous;
-		while (files->next)
+		while (files)
 		{
 			if (((t_arg *)files->content)->chose)
 				ft_printf("%s ", ((t_arg *)files->content)->file_name);
