@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 16:30:44 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/18 13:48:52 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/19 15:51:03 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ void			ft_get_win_size(t_setting *sets)
 	sets->column = win_size.ws_col;
 }
 
+static void		set_flags(t_setting **sets)
+{
+	char		bp[1024];
+
+	tgetent(bp, "TERMCAP");
+	tgetstr("ve", &((*sets)->ve));
+	tgetstr("vi", &((*sets)->vi));
+	tgetstr("cl", &((*sets)->cl));
+}
+
 /*
 **	sets->my_sets.c_cc[VMIN] = 1; VMIN флаг по сколько символов
 **	минимально считывается сивмолов
@@ -61,5 +71,9 @@ int				init_setting(t_setting **sets, t_vector *lst_file)
 	(*sets)->my_sets.c_lflag &= ~(ECHO | ICANON);
 	(*sets)->my_sets.c_cc[VMIN] = 1;
 	(*sets)->my_sets.c_cc[VTIME] = 0;
+	ft_bzero((*sets)->find_file, 4096);
+	(*sets)->find_i = 0;
+	(*sets)->find_mode = 0;
+	set_flags(sets);
 	return (SUCCESS);
 }

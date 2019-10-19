@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 17:26:02 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/19 13:14:17 by udraugr-         ###   ########.fr       */
+/*   Created: 2019/10/19 14:20:04 by udraugr-          #+#    #+#             */
+/*   Updated: 2019/10/19 15:09:59 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/ft_selcet.h"
 
-int		ft_strequ(char const *s1, char const *s2)
+void					ft_drawing(t_setting **sets)
 {
-	if (!s1 || !s2)
-		return (0);
-	while (*s1 || *s2)
-	{
-		if (*s1 != *s2)
-			return (0);
-		s1++;
-		s2++;
-	}
-	return ((*s1 == *s2) ? 1 : 0);
+
 }

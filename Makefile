@@ -15,6 +15,7 @@ SRC :=	\
 	source/signal_intercept.c\
 	source/ft_del_file.c\
 	source/ft_moves.c\
+	source/ft_find_mode.c\
 
 OBJ := $(patsubst %.c, %.o, $(SRC))
 

@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:35:59 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/18 17:27:53 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/19 12:52:17 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ static int				ft_key_distribution(t_setting **sets,
 												unsigned long long key)
 {
 	sets = (t_setting **)((void **)sets);
-	if (key == ENTER || key == ESC)
+	if ((key == F || key == F_SMALL) && !(*sets)->find_mode)
+		(*sets)->find_mode = 1;
+	else if ((*sets)->find_mode)
+		ft_find_mode(sets, key);
+	else if (key == ENTER || key == ESC)
 		return (EXIT);
 	else if (key == ARROW_LEFT || key == ARROW_RIGTH ||
 			key == ARROW_DOWN || key == ARROW_UP)
@@ -26,14 +30,12 @@ static int				ft_key_distribution(t_setting **sets,
 	else if (key == SPACE)
 		((t_arg *)((*sets)->lst_file->content))->chose =
 			!((t_arg *)((*sets)->lst_file->content))->chose;
-	/*else
-		ft_find_mode();*/
 	return (SUCCESS);
 }
 
 void					ft_wait_input(void)
 {
-	unsigned char		buff[1024];
+	unsigned char		buff[6];
 	int					read_bite;
 	unsigned long long	key;
 	int					i;
