@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/03 15:51:48 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/09/12 19:43:31 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/21 14:04:59 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void			ft_delall_vector(t_vector **chain, void (*f)(void **))
 	next = (*chain)->next;
 	previous = (*chain)->previous;
 	ft_del_vector(chain, f);
-	ft_delall_vector(&next, f);
-	ft_delall_vector(&previous, f);
+	if (next)
+		ft_delall_vector(&next, f);
+	else
+		ft_delall_vector(&previous, f);
 }

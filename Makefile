@@ -2,7 +2,7 @@ NAME := ft_select
 
 GCC := gcc -Wall -Wextra -Werror
 INCLUDE := -I include
-LIBFTPRINTF := -L libftprintf -lftprintf
+LIBFTPRINTF := -L libftprintf -lftprintf -ltermcap
 
 SRC :=	\
 	source/fts_t_arg.c\
@@ -16,6 +16,7 @@ SRC :=	\
 	source/ft_del_file.c\
 	source/ft_moves.c\
 	source/ft_find_mode.c\
+	source/drawing.c\
 
 OBJ := $(patsubst %.c, %.o, $(SRC))
 

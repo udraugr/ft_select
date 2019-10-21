@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:35:59 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/19 12:52:17 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/21 18:37:25 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void					ft_wait_input(void)
 	int					i;
 	t_setting			**sets;
 
+	ft_signal_intercept();
 	sets = ft_take_my_setting(NULL);
 	set_setting(&((*sets)->my_sets));
-	//drawing(sets);
-	ft_signal_intercept();
+	ft_drawing(sets);
 	while (sets && (*sets)->lst_file &&
 			(read_bite = read(STDOUT_FILENO, buff, 5)))
 	{
@@ -53,11 +53,10 @@ void					ft_wait_input(void)
 		i = 0;
 		while (buff[++i])
 			key = key * 256 + buff[i];
-		ft_printf("%llu\n", key);
 		if (ft_key_distribution(sets, key) == EXIT)
 			break ;
-		//else
-			//drawing(sets);
+		else
+			ft_drawing(sets);
 	}
 	ft_end_work(0);
 }

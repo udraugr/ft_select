@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 16:30:44 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/19 15:51:03 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/21 18:40:26 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,19 @@ void			ft_get_win_size(t_setting *sets)
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &win_size);
 	sets->row = win_size.ws_row;
 	sets->column = win_size.ws_col;
+	//ft_printf("%d %d\n", sets->row, sets->column);
 }
 
 static void		set_flags(t_setting **sets)
 {
-	char		bp[1024];
+	char		*bp;
 
-	tgetent(bp, "TERMCAP");
-	tgetstr("ve", &((*sets)->ve));
-	tgetstr("vi", &((*sets)->vi));
-	tgetstr("cl", &((*sets)->cl));
+	bp = (char *)malloc(1024);
+	if (tgetent(bp, getenv("TERM")) == -1)
+		ft_putendl_fd("Fail with tgetent\n", 2);
+	(*sets)->ve = tgetstr("ve", &bp);
+	(*sets)->vi = tgetstr("vi", &bp);
+	(*sets)->cl = tgetstr("cl", &bp);
 }
 
 /*

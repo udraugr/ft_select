@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:17:36 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/19 12:47:02 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/21 15:10:02 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ static int			ft_change_place(t_setting *sets, int now_pos, int all,
 	int				ans;
 	int				file_in_line;
 
-	file_in_line = sets->row / ((sets)->max_len_file + 1);
+	file_in_line = sets->column / ((sets)->max_len_file + 1);
 	ans = now_pos;
 	if (key == ARROW_LEFT && now_pos > 1)
 		ans = now_pos - 1;
 	else if (key == ARROW_RIGTH && now_pos < all)
 		ans = now_pos + 1;
 	else if (key == ARROW_UP && (now_pos - file_in_line) > 0)
-		now_pos = now_pos - file_in_line;
-	else if (key == ARROW_DOWN && (now_pos + file_in_line) < all)
-		now_pos = now_pos + file_in_line;
+		ans = now_pos - file_in_line;
+	else if (key == ARROW_DOWN && (now_pos + file_in_line) <= all)
+		ans = now_pos + file_in_line;
 	return (ans);
 }
 
