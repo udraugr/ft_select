@@ -35,7 +35,7 @@ static void			ft_cont_work(int sign)
 	{
 		sets = ft_take_my_setting(0);
 		ft_putstr_fd((*sets)->vi, 2);
-		//ft_wait_input();
+		ft_wait_input();
 	}
 }
 

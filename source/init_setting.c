@@ -34,7 +34,7 @@ void			ft_get_win_size(t_setting *sets)
 {
 	struct winsize	win_size;
 
-	ioctl(STDOUT_FILENO, TIOCGWINSZ, &win_size);
+	ioctl(STDIN_FILENO, TIOCGWINSZ, &win_size);
 	sets->row = win_size.ws_row;
 	sets->column = win_size.ws_col;
 	//ft_printf("%d %d\n", sets->row, sets->column);
@@ -44,7 +44,8 @@ static void		set_flags(t_setting **sets)
 {
 	char		*bp;
 
-	bp = (char *)malloc(1024);
+	bp = 0;
+	//bp = (char *)malloc(1024);
 	if (tgetent(bp, getenv("TERM")) == -1)
 		ft_putendl_fd("Fail with tgetent\n", 2);
 	(*sets)->ve = tgetstr("ve", &bp);

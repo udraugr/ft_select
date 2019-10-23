@@ -15,4 +15,5 @@
 void		set_setting(struct termios *sets)
 {
 	tcsetattr(STDIN_FILENO, TCSADRAIN, sets);
+	//tcsetattr(STDIN_FILENO, TCSANOW, sets);
 }

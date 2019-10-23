@@ -15,7 +15,6 @@
 static int				ft_key_distribution(t_setting **sets,
 												unsigned long long key)
 {
-	sets = (t_setting **)((void **)sets);
 	if ((key == F || key == F_SMALL) && !(*sets)->find_mode)
 		(*sets)->find_mode = 1;
 	else if ((*sets)->find_mode)
@@ -44,19 +43,19 @@ void					ft_wait_input(void)
 	ft_signal_intercept();
 	sets = ft_take_my_setting(NULL);
 	set_setting(&((*sets)->my_sets));
+	ft_putstr_fd((*sets)->vi, 2);
 	ft_drawing(sets);
 	while (sets && (*sets)->lst_file &&
-			(read_bite = read(STDOUT_FILENO, buff, 5)))
+			(read_bite = read(STDIN_FILENO, buff, 5)))
 	{
 		buff[read_bite] = '\0';
 		key = buff[0];
 		i = 0;
-		while (buff[++i])
+		while (buff[++i] && i < 6)
 			key = key * 256 + buff[i];
 		if (ft_key_distribution(sets, key) == EXIT)
 			break ;
-		else
-			ft_drawing(sets);
+		ft_drawing(sets);
 	}
 	ft_end_work(0);
 }

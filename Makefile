@@ -28,12 +28,12 @@ lib_create:
 $(NAME): lib_create $(OBJ)
 	@$(GCC) $(LIBFTPRINTF) $(INCLUDE) $(OBJ) -o $(NAME)
 	@printf "\033[?25h"
-	@printf "\rCreate $(NAME)!\n"
+	@printf "\rCreate $(NAME)!                           \n"
 
 %.o: %.c
 	@$(GCC) -c $< -o $@
 	@printf "\033[?25l"
-	@printf "\rCompiling: $<				"
+	@printf "\rCompiling: $<                              "
 
 clean:
 	@/bin/rm -f $(OBJ)

@@ -18,6 +18,8 @@ void			ft_end_work(int sign)
 	t_vector	*files;
 
 	sets = ft_take_my_setting(0);
+	ft_putstr_fd((*sets)->ve, 2);
+	ft_putstr_fd((*sets)->cl, 2);
 	files = (*sets)->lst_file;
 	if (sign == 0 && files != NULL)
 	{

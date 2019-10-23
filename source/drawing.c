@@ -68,7 +68,7 @@ void					ft_drawing(t_setting **sets)
 	t_vector			*lst;
 	int					free_space_in_line;
 
-	ft_putendl_fd((*sets)->cl, 2);
+	ft_putstr_fd((*sets)->cl, 2);
 	ft_putendl_fd((*sets)->find_file, 2);
 	//ft_putendl_fd((*sets)->find_mes, 2);
 	ft_putendl_fd("", 2);
