@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 12:48:53 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/19 13:32:22 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/24 12:40:30 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ static void				ft_find_filename(t_setting **sets)
 					(*sets)->find_i) == 0)
 		{
 			(*sets)->lst_file = files;
+			(*sets)->find_mes = "Find result: \033[32;1mOK!\033[0m";
 			return ;
 		}
+		(*sets)->find_mes = "Find result: \033[31;1mNOT FOUND!\033[0m";
 		files = files->next;
 	}
 }

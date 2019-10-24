@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:02:34 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/21 18:44:12 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/24 12:57:28 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ static void			ft_change_size(int sign)
 		sets = ft_take_my_setting(0);
 		if (sets)
 		{
+			ft_putstr_fd((*sets)->cl, 2);
 			ft_get_win_size(*sets);
+			if (ft_check_size_window(sets))
+				ft_drawing(sets);
 		}
 		signal(SIGWINCH, ft_change_size);
-		ft_putstr_fd((*sets)->cl, 2);
-		ft_drawing(sets);
-		//ft_wait_input();
 	}
 }
 

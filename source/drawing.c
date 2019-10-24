@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 14:20:04 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/21 14:15:17 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/24 12:41:38 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,15 @@ static void				print_files(t_vector *file,
 	char				*tmp;
 	t_arg				*current;
 
-	tmp = (char *)malloc(sets->max_len_file + 2);
-	ft_memset(tmp, ' ', sets->max_len_file + 1);
+	tmp = (char *)malloc(sets->max_len_file + 5);
+	ft_memset(tmp + 1, ' ', sets->max_len_file + 2);
+	tmp[0] = '|';
+	tmp[sets->max_len_file + 3] = '|';
+	tmp[sets->max_len_file + 4] = '\0';
 	current = (t_arg *)file->content;
-	ft_strncpy(tmp, current->file_name, ft_strlen(current->file_name));
+	ft_strncpy(tmp + 2, current->file_name, ft_strlen(current->file_name));
 	ft_set_print_setting(file, current, sets);	
-	write(2, tmp, sets->max_len_file + 1);
+	ft_putstr_fd(tmp, 2);
 	ft_unset_print_setting();
 }
 
@@ -70,21 +73,20 @@ void					ft_drawing(t_setting **sets)
 
 	ft_putstr_fd((*sets)->cl, 2);
 	ft_putendl_fd((*sets)->find_file, 2);
-	//ft_putendl_fd((*sets)->find_mes, 2);
-	ft_putendl_fd("", 2);
+	ft_putendl_fd((*sets)->find_mes, 2);
 	lst = (*sets)->lst_file;
 	while (lst->previous)
 		lst = lst->previous;
 	free_space_in_line = (*sets)->column;
 	while (lst)
 	{
-		if (free_space_in_line < ((*sets)->max_len_file + 1))
+		if (free_space_in_line < ((*sets)->max_len_file + 4))
 		{
 			write(2, "\n", 1);
 			free_space_in_line = (*sets)->column;
 		}
 		print_files(lst, *sets);
 		lst = lst->next;
-		free_space_in_line -= ((*sets)->max_len_file + 1);
+		free_space_in_line -= ((*sets)->max_len_file + 4);
 	}
 }

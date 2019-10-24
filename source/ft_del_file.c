@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:39:20 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/21 15:15:46 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/24 12:48:19 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int				ft_del_file(t_setting **sets, int key)
 			files = 0;
 		ft_del_vector(&((*sets)->lst_file), ft_destroy_t_arg);
 		(*sets)->lst_file = files;
+		--((*sets)->all_files);
 		if (files == 0)
 			return (EXIT);
 	}
@@ -36,6 +37,7 @@ int				ft_del_file(t_setting **sets, int key)
 	{
 		files = files->next;
 		ft_del_vector(&files, ft_destroy_t_arg);
+		--((*sets)->all_files);
 		//ft_del_vector(&(files->next), ft_destroy_t_arg);
 	}
 	return (SUCCESS);

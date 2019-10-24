@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 16:30:44 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/21 18:40:26 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/24 13:53:23 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void			ft_get_win_size(t_setting *sets)
 	ioctl(STDIN_FILENO, TIOCGWINSZ, &win_size);
 	sets->row = win_size.ws_row;
 	sets->column = win_size.ws_col;
-	//ft_printf("%d %d\n", sets->row, sets->column);
+	if (!ft_check_size_window(&sets))
+		ft_putstr_fd("Win small!\n", 2);
 }
 
 static void		set_flags(t_setting **sets)
@@ -45,7 +46,6 @@ static void		set_flags(t_setting **sets)
 	char		*bp;
 
 	bp = 0;
-	//bp = (char *)malloc(1024);
 	if (tgetent(bp, getenv("TERM")) == -1)
 		ft_putendl_fd("Fail with tgetent\n", 2);
 	(*sets)->ve = tgetstr("ve", &bp);
@@ -66,8 +66,8 @@ int				init_setting(t_setting **sets, t_vector *lst_file)
 	if (getenv("TERM") == NULL ||
 		((*sets) = (t_setting *)malloc(sizeof(t_setting))) == NULL)
 		return (FAIL);
-	(*sets)->cur_pos = 0;
 	(*sets)->lst_file = lst_file;
+	(*sets)->all_files = ft_count_vector(lst_file);
 	ft_get_max_len_file(*sets);
 	ft_get_win_size(*sets);
 	tcgetattr(STDIN_FILENO, &(*sets)->def_sets);
@@ -76,6 +76,7 @@ int				init_setting(t_setting **sets, t_vector *lst_file)
 	(*sets)->my_sets.c_cc[VMIN] = 1;
 	(*sets)->my_sets.c_cc[VTIME] = 0;
 	ft_bzero((*sets)->find_file, 4096);
+	(*sets)->find_mes = "";
 	(*sets)->find_i = 0;
 	(*sets)->find_mode = 0;
 	set_flags(sets);

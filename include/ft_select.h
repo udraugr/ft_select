@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:16:43 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/21 14:00:29 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/24 12:56:41 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,12 @@ typedef struct		s_setting
 	t_vector		*lst_file;
 	int				column;
 	int				row;
-	int				cur_pos;
+	int				all_files;
 	int				max_len_file;
 	int				find_mode;
 	int				find_i;
 	char			find_file[4096];
+	char			*find_mes;
 	struct termios	def_sets;
 	struct termios	my_sets;
 	char			*ve;
@@ -78,6 +79,8 @@ void				ft_destroy_t_arg(void **old_void);
 void				ft_get_win_size(t_setting *sets);
 void				ft_get_max_len_name(t_setting *sets);
 int					init_setting(t_setting **sets, t_vector *lst_file);
+
+int					ft_check_size_window(t_setting **sets);
 
 void				ft_drawing(t_setting **sets);
 void				ft_wait_input(void);
