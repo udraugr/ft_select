@@ -17,6 +17,7 @@ SRC :=	\
 	source/ft_moves.c\
 	source/ft_find_mode.c\
 	source/drawing.c\
+	source/chose.c
 
 OBJ := $(patsubst %.c, %.o, $(SRC))
 

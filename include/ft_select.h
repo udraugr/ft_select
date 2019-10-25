@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:16:43 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/24 12:56:41 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/25 20:14:54 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define F 70
 # define F_SMALL 102
 # define PRINTABLE(x) (x >= 32 && x <= 126) ? 1 : 0
+# define ABS(x) (x < 0) ? -x : x
 
 typedef struct		s_arg
 {
@@ -87,6 +88,7 @@ void				ft_wait_input(void);
 void				ft_signal_intercept(void);
 
 int					ft_del_file(t_setting **sets, int key);
+void				ft_chose(t_setting **sets);
 void				ft_moves(t_setting **sets, unsigned long long key);
 void				ft_find_mode(t_setting **sets, unsigned long long key);
 

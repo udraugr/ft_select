@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:17:36 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/24 12:19:04 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/25 20:35:46 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,28 @@ static int			ft_change_place(t_setting *sets, int now_pos, int all,
 
 	file_in_line = sets->column / ((sets)->max_len_file + 4);
 	ans = now_pos;
-	if (key == ARROW_LEFT && now_pos > 1)
-		ans = now_pos - 1;
-	else if (key == ARROW_RIGTH && now_pos < all)
-		ans = now_pos + 1;
-	else if (key == ARROW_UP && (now_pos - file_in_line) > 0)
-		ans = now_pos - file_in_line;
-	else if (key == ARROW_DOWN && (now_pos + file_in_line) <= all)
-		ans = now_pos + file_in_line;
+	if (key == ARROW_LEFT)
+		ans = (now_pos > 1) ? now_pos - 1 : all;
+	else if (key == ARROW_RIGTH)
+		ans = (now_pos < all) ? now_pos + 1 : 1;
+	else if (key == ARROW_UP)
+	{
+		if (now_pos - file_in_line > 0)
+			ans = now_pos - file_in_line;
+		else if (all % file_in_line >= now_pos)
+			ans = all - (all % file_in_line) + now_pos;
+		else
+			ans = all - (all % file_in_line) - file_in_line + now_pos;
+	}
+	else if (key == ARROW_DOWN)
+	{
+		if (now_pos + file_in_line <= all)
+			ans = now_pos + file_in_line;
+		else if (now_pos % file_in_line)
+			ans = now_pos % file_in_line;
+		else
+			ans = file_in_line;
+	}
 	return (ans);
 }
 

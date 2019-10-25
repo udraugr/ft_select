@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 14:20:04 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/24 12:41:38 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/25 18:39:10 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void				change_color(t_arg *current)
 		write(2, "\033[32m", 5);
 	else if (current->file_type == CHR_DEV)
 		write(2, "\033[33m", 5);
-
 }
 
 static void				ft_set_print_setting(t_vector *file,
@@ -45,7 +44,7 @@ static void				ft_set_print_setting(t_vector *file,
 
 static void				ft_unset_print_setting(void)
 {
-		write(2, "\033[0m", 4);
+	write(2, "\033[0m", 4);
 }
 
 static void				print_files(t_vector *file,
@@ -61,7 +60,7 @@ static void				print_files(t_vector *file,
 	tmp[sets->max_len_file + 4] = '\0';
 	current = (t_arg *)file->content;
 	ft_strncpy(tmp + 2, current->file_name, ft_strlen(current->file_name));
-	ft_set_print_setting(file, current, sets);	
+	ft_set_print_setting(file, current, sets);
 	ft_putstr_fd(tmp, 2);
 	ft_unset_print_setting();
 }

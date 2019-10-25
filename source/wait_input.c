@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:35:59 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/24 13:56:25 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/25 20:41:01 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,15 @@ static int				ft_key_distribution(t_setting **sets,
 	else if (key == DELETE || key == BACKSPACE)
 		return (ft_del_file(sets, key));
 	else if (key == SPACE)
-		((t_arg *)((*sets)->lst_file->content))->chose =
-			!((t_arg *)((*sets)->lst_file->content))->chose;
+		ft_chose(sets);
 	return (SUCCESS);
 }
 
-int					ft_check_size_window(t_setting **sets)
+int						ft_check_size_window(t_setting **sets)
 {
 	if ((*sets)->column < 4 + (*sets)->max_len_file ||
-		(*sets)->row <
-				2 + ((*sets)->all_files / ((*sets)->max_len_file + 4)))
+		(*sets)->row < 2 +
+		(*sets)->all_files / ((*sets)->column / ((*sets)->max_len_file + 4)))
 		return (0);
 	return (1);
 }
@@ -50,7 +49,7 @@ void					ft_wait_input(void)
 	t_setting			**sets;
 
 	ft_signal_intercept();
-	sets = ft_take_my_setting(NULL);
+	sets = ft_take_my_setting(0);
 	set_setting(&((*sets)->my_sets));
 	ft_putstr_fd((*sets)->vi, 2);
 	if (ft_check_size_window(sets))
