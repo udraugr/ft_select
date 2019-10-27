@@ -6,11 +6,17 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:39:20 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/25 20:45:34 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 17:21:47 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_select.h"
+
+/*
+** files = files->next;
+** ft_del_vector(&files, ft_destroy_t_arg);
+** //ft_del_vector(&(files->next), ft_destroy_t_arg);
+*/
 
 int				ft_del_file(t_setting **sets, int key)
 {
@@ -36,7 +42,6 @@ int				ft_del_file(t_setting **sets, int key)
 	{
 		files = files->next;
 		ft_del_vector(&files, ft_destroy_t_arg);
-		//ft_del_vector(&(files->next), ft_destroy_t_arg);
 	}
 	--((*sets)->all_files);
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:35:59 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/27 17:07:50 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 17:18:30 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int				ft_key_distribution(t_setting **sets,
 		ft_find_mode(sets, key);
 	else if (key == ENTER || key == ESC)
 	{
-		//if (key == ENTER)
-		//	(*sets)->output = 1;
+		if (key == ENTER)
+			(*sets)->output = 1;
 		return (EXIT);
 	}
 	else if (key == ARROW_LEFT || key == ARROW_RIGTH ||

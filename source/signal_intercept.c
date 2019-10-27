@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:02:34 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/27 17:06:32 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 17:19:54 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void			ft_stop_work(int sign)
 		sets = ft_take_my_setting(0);
 		set_setting(&((*sets)->def_sets));
 		ft_putstr_fd((*sets)->ve, 2);
+		ft_putstr_fd((*sets)->cl, 2);
 		signal(SIGTSTP, SIG_DFL);
 		ioctl(STDERR_FILENO, TIOCSTI, "\x1A");
 	}

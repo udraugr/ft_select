@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 16:30:44 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/27 17:13:33 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 17:18:16 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int				init_setting(t_setting **sets, t_vector *lst_file)
 	(*sets)->all_files = ft_count_vector(lst_file);
 	ft_get_max_len_file(*sets);
 	ft_get_win_size(*sets);
-	//(*sets)->output = 0;
 	tcgetattr(STDIN_FILENO, &(*sets)->def_sets);
 	tcgetattr(STDIN_FILENO, &(*sets)->my_sets);
 	(*sets)->my_sets.c_lflag &= ~(ECHO | ICANON);
@@ -81,5 +80,6 @@ int				init_setting(t_setting **sets, t_vector *lst_file)
 	(*sets)->find_i = 0;
 	(*sets)->find_mode = 0;
 	set_flags(sets);
+	(*sets)->output = 0;
 	return (SUCCESS);
 }

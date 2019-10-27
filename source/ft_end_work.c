@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:32:32 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/27 17:16:38 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 17:18:41 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void			ft_end_work(int sign)
 	ft_putstr_fd((*sets)->ve, 2);
 	ft_putstr_fd((*sets)->cl, 2);
 	files = (*sets)->lst_file;
-	//if ((*sets)->output)
-	//	ft_output_ans(files);
+	if ((*sets)->output)
+		ft_output_ans(files);
 	set_setting(&((*sets)->def_sets));
 	if ((*sets)->lst_file)
 	{

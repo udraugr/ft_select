@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:16:43 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/27 17:07:57 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 17:17:52 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct		s_setting
 	int				row;
 	int				all_files;
 	int				max_len_file;
-//	int				output;
 	int				find_mode;
 	int				find_i;
 	char			find_file[4096];
@@ -73,6 +72,7 @@ typedef struct		s_setting
 	char			*ve;
 	char			*vi;
 	char			*cl;
+	int				output;
 }					t_setting;
 
 t_arg				*ft_create_t_arg(char *value);
