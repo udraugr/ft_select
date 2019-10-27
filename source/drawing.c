@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 14:20:04 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/25 18:39:10 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 17:00:13 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static void				print_files(t_vector *file,
 	ft_set_print_setting(file, current, sets);
 	ft_putstr_fd(tmp, 2);
 	ft_unset_print_setting();
+	ft_strdel(&tmp);
 }
 
 void					ft_drawing(t_setting **sets)

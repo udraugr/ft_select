@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 13:02:59 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/25 17:07:46 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 16:22:46 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,4 @@
 void		set_setting(struct termios *sets)
 {
 	tcsetattr(STDIN_FILENO, TCSADRAIN, sets);
-	//tcsetattr(STDIN_FILENO, TCSANOW, sets);
 }

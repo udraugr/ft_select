@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:02:34 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/25 17:12:34 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 17:06:32 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static void			ft_cont_work(int sign)
 		ft_get_win_size(*sets);
 		if (ft_check_size_window(sets))
 			ft_drawing(sets);
+		signal(SIGCONT, ft_cont_work);
+		signal(SIGTSTP, ft_stop_work);
 	}
 }
 

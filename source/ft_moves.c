@@ -6,11 +6,37 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 16:17:36 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/25 20:35:46 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 16:34:33 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_select.h"
+
+static int			ft_up(int file_in_line, int all, int now_pos)
+{
+	int				ans;
+
+	if (now_pos - file_in_line > 0)
+		ans = now_pos - file_in_line;
+	else if (all % file_in_line >= now_pos)
+		ans = all - (all % file_in_line) + now_pos;
+	else
+		ans = all - (all % file_in_line) - file_in_line + now_pos;
+	return (ans);
+}
+
+static int			ft_down(int file_in_line, int all, int now_pos)
+{
+	int				ans;
+
+	if (now_pos + file_in_line <= all)
+		ans = now_pos + file_in_line;
+	else if (now_pos % file_in_line)
+		ans = now_pos % file_in_line;
+	else
+		ans = file_in_line;
+	return (ans);
+}
 
 static int			ft_change_place(t_setting *sets, int now_pos, int all,
 										int key)
@@ -25,23 +51,9 @@ static int			ft_change_place(t_setting *sets, int now_pos, int all,
 	else if (key == ARROW_RIGTH)
 		ans = (now_pos < all) ? now_pos + 1 : 1;
 	else if (key == ARROW_UP)
-	{
-		if (now_pos - file_in_line > 0)
-			ans = now_pos - file_in_line;
-		else if (all % file_in_line >= now_pos)
-			ans = all - (all % file_in_line) + now_pos;
-		else
-			ans = all - (all % file_in_line) - file_in_line + now_pos;
-	}
+		ans = ft_up(file_in_line, all, now_pos);
 	else if (key == ARROW_DOWN)
-	{
-		if (now_pos + file_in_line <= all)
-			ans = now_pos + file_in_line;
-		else if (now_pos % file_in_line)
-			ans = now_pos % file_in_line;
-		else
-			ans = file_in_line;
-	}
+		ans = ft_down(file_in_line, all, now_pos);
 	return (ans);
 }
 

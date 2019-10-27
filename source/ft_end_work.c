@@ -6,22 +6,15 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:32:32 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/25 18:07:37 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 17:16:38 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_select.h"
 
-void			ft_end_work(int sign)
+static void		ft_output_ans(t_vector *files)
 {
-	t_setting	**sets;
-	t_vector	*files;
-
-	sets = ft_take_my_setting(0);
-	ft_putstr_fd((*sets)->ve, 2);
-	ft_putstr_fd((*sets)->cl, 2);
-	files = (*sets)->lst_file;
-	if (sign == 0 && files != NULL)
+	if (files != NULL)
 	{
 		while (files->previous)
 			files = files->previous;
@@ -32,6 +25,19 @@ void			ft_end_work(int sign)
 			files = files->next;
 		}
 	}
+}
+
+void			ft_end_work(int sign)
+{
+	t_setting	**sets;
+	t_vector	*files;
+
+	sets = ft_take_my_setting(0);
+	ft_putstr_fd((*sets)->ve, 2);
+	ft_putstr_fd((*sets)->cl, 2);
+	files = (*sets)->lst_file;
+	//if ((*sets)->output)
+	//	ft_output_ans(files);
 	set_setting(&((*sets)->def_sets));
 	if ((*sets)->lst_file)
 	{
