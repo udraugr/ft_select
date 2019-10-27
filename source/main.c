@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:19:07 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/18 13:48:00 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 17:56:43 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int		ft_parse_argv(char **argv, int argc, t_vector **lst_file)
 		if ((cur_file = ft_create_t_arg(argv[i])) == NULL)
 		{
 			ft_delall_vector(lst_file, ft_destroy_t_arg);
+			return (FAIL);
 		}
 		*lst_file = ft_add_vector(*lst_file, cur_file);
 		++i;

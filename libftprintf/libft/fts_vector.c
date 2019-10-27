@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 13:00:39 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/09/13 14:53:46 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 17:52:44 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,20 @@ int				ft_count_vector(t_vector *begin)
 
 void			ft_del_vector(t_vector **chain, void (*f)(void **))
 {
+	t_vector	*del;
+
 	if (!chain || !(*chain))
 		return ;
-	if ((*chain)->previous)
-		((*chain)->previous)->next = (*chain)->next;
-	if ((*chain)->next)
-		((*chain)->next)->previous = (*chain)->previous;
-	(*chain)->next = 0;
-	(*chain)->previous = 0;
-	if ((*chain)->content != 0)
-		f((void **)(&(*chain)->content));
-	free(*chain);
-	*chain = 0;
+	del = *chain;
+	if (del->previous)
+		(del->previous)->next = del->next;
+	if (del->next)
+		(del->next)->previous = del->previous;
+	del->next = 0;
+	del->previous = 0;
+	if (del->content != 0)
+		f((void **)(&(del->content)));
+	ft_memdel((void **)&del);
 }
 
 t_vector		*ft_add_vector(t_vector *begin, void *content)
