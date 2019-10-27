@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 16:30:44 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/27 17:18:16 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 18:33:35 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void		set_flags(t_setting **sets)
 
 	bp = 0;
 	if (tgetent(bp, getenv("TERM")) == -1)
-		ft_putendl_fd("Fail with tgetent\n", 2);
+		ft_putendl_fd("Fail with tgetent", 2);
 	(*sets)->ve = tgetstr("ve", &bp);
 	(*sets)->vi = tgetstr("vi", &bp);
 	(*sets)->cl = tgetstr("cl", &bp);
@@ -65,7 +65,10 @@ int				init_setting(t_setting **sets, t_vector *lst_file)
 {
 	if (getenv("TERM") == NULL ||
 		((*sets) = (t_setting *)malloc(sizeof(t_setting))) == NULL)
+	{
+		ft_putendl_fd("Fail with initialization", 2);
 		return (FAIL);
+	}
 	(*sets)->lst_file = lst_file;
 	(*sets)->all_files = ft_count_vector(lst_file);
 	ft_get_max_len_file(*sets);

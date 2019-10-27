@@ -6,7 +6,7 @@
 /*   By: udraugr- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 13:32:32 by udraugr-          #+#    #+#             */
-/*   Updated: 2019/10/27 17:18:41 by udraugr-         ###   ########.fr       */
+/*   Updated: 2019/10/27 18:49:48 by udraugr-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 static void		ft_output_ans(t_vector *files)
 {
+	int			words;
+
+	words = 0;
 	if (files != NULL)
 	{
 		while (files->previous)
@@ -21,7 +24,12 @@ static void		ft_output_ans(t_vector *files)
 		while (files)
 		{
 			if (((t_arg *)files->content)->chose)
-				ft_printf("%s ", ((t_arg *)files->content)->file_name);
+			{
+				if (words)
+					ft_putchar(' ');
+				ft_printf("%s", ((t_arg *)files->content)->file_name);
+				++words;
+			}
 			files = files->next;
 		}
 	}
