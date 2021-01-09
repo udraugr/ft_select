@@ -1,6 +1,6 @@
 NAME := ft_select
 
-GCC := gcc -Wall -Wextra -Werror
+GCC := clang -Wall -Wextra -Werror
 INCLUDE := -I include
 LIBFTPRINTF := -L libftprintf -lftprintf -ltermcap
 
